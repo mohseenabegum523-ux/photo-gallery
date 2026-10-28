@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div>
+      <h1>📸 Photo Gallery</h1>
+      <p>Upload, view and organize your memories.</p>
+    </div>
+    <button class="primary" onclick="openUpload()">+ Add Photo</button>
+  </header>
+
+  <main class="container">
+    <section class="toolbar">
+      <div>
+        <h2>My Gallery</h2>
+        <span id="photoCount">0 photos</span>
+      </div>
+      <button class="secondary" onclick="openAlbum()">+ New Album</button>
+    </section>
+
+    <div id="albums" class="albums"></div>
+    <section id="gallery" class="gallery"></section>
+    <p id="empty" class="empty">No photos yet. Add your first photo!</p>
+  </main>
+
+  <div id="uploadModal" class="modal">
+    <div class="modal-box">
+      <button class="close" onclick="closeUpload()">×</button>
+      <h2>Upload Photo</h2>
+      <form id="uploadForm">
+        <label>Photo</label>
+        <input type="file" name="photo" accept="image/*" required>
+
+        <label>Title</label>
+        <input type="text" name="title" placeholder="Enter photo title">
+
+        <label>Album</label>
+        <select name="album_id" id="albumSelect"></select>
+
+        <button class="primary full" type="submit">Upload Photo</button>
+      </form>
+      <p id="uploadMessage" class="message"></p>
+    </div>
+  </div>
+
+  <div id="albumModal" class="modal">
+    <div class="modal-box">
+      <button class="close" onclick="closeAlbum()">×</button>
+      <h2>Create Album</h2>
+      <form id="albumForm">
+        <label>Album name</label>
+        <input type="text" id="albumName" placeholder="Example: College Memories" required>
+        <button class="primary full" type="submit">Create Album</button>
+      </form>
+      <p id="albumMessage" class="message"></p>
+    </div>
+  </div>
+
+  <div id="viewer" class="viewer" onclick="closeViewer(event)">
+    <button class="viewer-close">×</button>
+    <img id="viewerImage" src="" alt="Preview">
+    <h3 id="viewerTitle"></h3>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
